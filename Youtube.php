@@ -87,7 +87,7 @@ class Youtube{
 					}
 				}
 
-				$url = urldecode($url).'&signature='.$sig;
+				$url = urldecode($url);
 				$videos[$this->videoMap[$type][0]][$this->videoMap[$type][1]] = $url;
 			}
 		}
