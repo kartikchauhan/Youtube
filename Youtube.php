@@ -45,7 +45,13 @@ class Youtube{
 	 */
 	protected function getPageContent($id){
 		$page = $this->videoPageUrl.$id;
-		$content = file_get_contents($page);
+		$arr = array(
+		    "ssl"=>array(
+		        "verify_peer"=>false,
+		        "verify_peer_name"=>false,
+		    ),
+		);  
+		$content = file_get_contents($page, false, stream_context_create($arr));
 		return $content;
 	}
 	
@@ -59,7 +65,7 @@ class Youtube{
 		$content = $this->getPageContent($id);
 		$videos = array('MP4' => array(), 'FLV' => array(), '3GP' => array(), 'WEBM' => array());
 		
-		if(preg_match('/\"url_encoded_fmt_stream_map\": \"(.*)\"/iUm', $content, $r)){
+		if(preg_match("'\"url_encoded_fmt_stream_map\":\"(.*?)\"'si", $content, $r)){
 			$data = $r[1];
 			$data = explode(',', $data);
 			
