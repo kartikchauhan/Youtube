@@ -34,9 +34,7 @@ class Youtube{
 	 * The page that will be used for requests
 	 * 
 	 * @var string
-	 */ 
-	private $videoPageUrl = 'http://www.youtube.com/watch?v=';
-	
+	 */ 		
 	/**
 	 * Returns the video page content
 	 * 
