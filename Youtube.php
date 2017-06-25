@@ -43,8 +43,7 @@ class Youtube{
 	 * @param string  The video id
 	 * @return string The video page content 
 	 */
-	protected function getPageContent($id){
-		$page = $this->videoPageUrl.$id;
+	protected function getPageContent($page){
 		$arr = array(
 		    "ssl"=>array(
 		        "verify_peer"=>false,
