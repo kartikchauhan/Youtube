@@ -2,7 +2,16 @@
 	require 'Youtube.php';
 
 	$youtube = new Zarkiel\Media\Youtube();
-	$links = $youtube->getDownloadLinks('q_gfD3nvh-8');
+
+	$videoUrl = $_POST['video_url'];
+	if(isset($videoUrl) && !empty($videoUrl))
+	{
+		$links = $youtube->getDownloadLinks($videoUrl);
+	}
+	else
+	{
+		die('Enter a valid URL');
+	}
 ?>
 
 <!doctype html>
